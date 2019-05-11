@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: cxgen
+Version: 1.0
+Summary: A package to generate cx_Freeze setup.py file!
+Home-page: UNKNOWN
+Author: Armaan Aggarwal
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: cxgen 1.0
+        
+        This is a little package that can generate a cx_Freeze setup.py script to 
+        turn your program into an .exe or .app file!
+        
+        To know how to use this module, import cxgen and then call: 'cxgen.manual()'
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent

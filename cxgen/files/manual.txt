@@ -1,0 +1,42 @@
+Manual for cxgen 1.0:
+
+1. cxgen.app()
+	Usage: A script generator for the module for cx_Freeze.
+		It asks you a set of questions and with the
+		answers provided, it generates a script.
+
+
+2. cxgen.run(appname,filename,pygameusage,console,icon)
+	Usage: Fill in the parameters and it will generate a script
+		for the module cx_Freeze
+
+
+		appname parameter: This parameter should be the name of your application
+
+		filename parameter: This parameter should be the name of your python file you 
+					want to convert. ex: 'helloworld.py'
+
+		pygameusage parameter: This parameter if for if you want pygame built in
+					your application - 
+					make this paramater True if you want pygame,
+					if you do not want pygame, make this parameter False
+
+		console parameter: This parameter is for if you want the console window
+					in your application - 
+					make this paramater True if you want the console window,
+					if you do not want the console window make this parameter False
+
+		icon parameter: This parameter should be if you want your application to have an icon-
+					make this paramater your icon filename if you want an icon,
+					ex. 'icon.ico'
+					if you do not want an icon, make this parameter None
+
+
+3. cxgen.cxgen_license()
+	Usage: Shows the license of cxgen
+
+4. cxgen.manual()
+	Usage: Shows the manual of cxgen
+
+5. cxgen.about()
+	Usage: Shows some information on cxgen
