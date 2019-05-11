@@ -1,4 +1,4 @@
-cxgen 1.0
+# cxgen 1.0.1
 
 This is a little package that can generate a cx_Freeze setup.py script to 
 turn your program into an .exe or .app file!
