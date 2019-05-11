@@ -10,4 +10,5 @@ turn your program into an .exe or .app file!
 To know how to use this module, import cxgen and then call: 'cxgen.manual()'
 
 PyPI page: https://pypi.org/project/cxgen/
+
 GitHub repository: https://github.com/armaan115/cxgen
