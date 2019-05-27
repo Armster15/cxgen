@@ -1,12 +1,35 @@
 import time
 import pkg_resources
+
 name = "cxgen"
+version='1.0.2.2'
 
 #cxgen.run() variables:
     #for no icon, make icon=None
     #console: True if u want console, False if u don't want console
-    #pygameusage: if u want pygame, make True, False, if u don't want quit
-def run(appname,filename,pygameusage,console,icon):
+    #tkinterusage: if u want tkinter, make True, False, if u don't want quit
+def run(appname,filename,tkinterusage,console,icon):
+    """To learn how cxgen.run() works, call the function 'cxgen.manual()'."""
+
+    if console != True and console != False:
+        error="is not a valid value for the console parameter. Learn more about this paramter by calling 'cxgen.manual()'"
+
+    if tkinterusage != True and tkinterusage != False:
+        error="is not a valid value for the tkinterusage parameter. Learn more about this paramter by calling 'cxgen.manual()'"
+
+        tkinterusage=str(tkinterusage)
+        tkinterusage="'"+tkinterusage+"' " #adds a space at the end of tkinterusage for formatting reasons
+
+        error=tkinterusage+error #creates the 'final draft' of the error
+        
+        raise ValueError(error)
+
+        console=str(console)
+        console="'"+console+"' " #adds a space at the end of console for formatting reasons
+
+        error=console+error #creates the 'final draft' of the error
+        
+        raise ValueError(error)
 
     if icon!=None:
         icon=str(icon)
@@ -17,7 +40,7 @@ def run(appname,filename,pygameusage,console,icon):
     appname='"'+appname+'",'
     filename='"'+filename+'",'
 
-    if pygameusage==True:
+    if tkinterusage==True:
         print()
 
         print("Copy and Paste the code below in a new .py file.")
@@ -27,13 +50,24 @@ def run(appname,filename,pygameusage,console,icon):
         print("import cx_Freeze")
         print("from cx_Freeze import *")
 
-        print("imodules=['pygame'] #modules to include")
+        print("imodules=['tkinter'] #modules to include")
         print()
         print("emodules=[] ###modules to NOT include")
         print("            #(useful if a module is forcefully installed")
         print("            #even if you don't want that module)")
         print()
-        print('build_exe_options={"packages":imodules,"excludes":emodules}')
+        
+        print('import pkg_resources as p')
+        print('tkdll=p.resource_filename("cxgen","/files/tk86t.dll)')
+        print('tcldll=p.resource_filename("cxgen","/files/tcl86t.dll)')
+        print()
+        print("includefiles=[tkdll,tcldll] #files to include (these can be images, documents, dlls, etc.)")
+        print()
+        print("#NOTE: DO NOT remove tcldll and tkdll in includefiles if you are using tkinter.")
+        print("       #They are required dlls for tkinter to work.")
+        print('       #But, you can also include other files your program requires')
+        print()
+        print('build_exe_options={"packages":imodules,"excludes":emodules,include_files:includefiles}')
 
         
         if console==True:
@@ -43,8 +77,7 @@ def run(appname,filename,pygameusage,console,icon):
             print("import sys")
             print('if sys.platform == "win32":')
             print('     base = "Win32GUI"')
-##        if console != True or False:
-##            raise ValueError(console, "is not a valid argument for the console paramater. To know how to use this paramter, run the 'cxgen.manual()' function")
+            
 
 
         print("setup(")
@@ -66,7 +99,8 @@ def run(appname,filename,pygameusage,console,icon):
         print("        )")
 
 
-    if pygameusage==False:
+
+    if tkinterusage==False:
         
         if icon!=None:
             icon=str(icon)
@@ -87,8 +121,14 @@ def run(appname,filename,pygameusage,console,icon):
         print("            #(useful if a module is forcefully installed")
         print("            #even if you don't want that module)")
         print()
-        print('build_exe_options={"packages":imodules,"excludes":emodules}')
 
+        print("includefiles=[] #files to include")
+        print("                #(these can be images, documents, dlls, etc.)")
+        
+        print()
+              
+        print('build_exe_options={"packages":imodules,"excludes":emodules,include_files:includefiles}')
+        
         
         if console==True:
             print("base=None")
@@ -97,8 +137,8 @@ def run(appname,filename,pygameusage,console,icon):
             print('if sys.platform == "win32":')
             print('     base = "Win32GUI"')
 
-##        if console !=True or False:
-##            raise ValueError(console, 'is not a valid argument for the console paramater. To know how to use this paramter, run the "cxgen.manual()" function')
+        if console !=True or console != False:
+            raise ValueError(console, 'is not a valid argument for the console paramater. To know how to use this paramter, run the "cxgen.manual()" function')
 
         print("setup(")
         print('        name=',appname)
@@ -118,11 +158,7 @@ def run(appname,filename,pygameusage,console,icon):
         print("        )")
 
 
-##    if pygameusage !=True:
-##        raise ValueError(pygameusage, "is not a valid argument for the pygameusage paramater. To know how to use this paramter, run the 'cxgen.manual()' function")
-##
-##    if pygameusage !=False:
-##        raise ValueError(pygameusage, "is not a valid argument for the pygameusage paramater. To know how to use this paramter, run the 'cxgen.manual()' function")
+
 
 #cxgen.app() variables:
     #appname= name of app
@@ -134,8 +170,8 @@ def run(appname,filename,pygameusage,console,icon):
 
 
 def app():
-    import cxgen.appfile
-
+    from cxgen import appfile
+        
 def cxgen_license():
     lf=pkg_resources.resource_filename('cxgen','files/LICENSE-for-function.txt')
 
@@ -148,10 +184,7 @@ def manual():
         print (m.read())
 
 def about():
-    print("About cxgen 1.0.2.1")
+    print("About cxgen {}".format(version))
     print()
-    print("Created by Armaan Aggarwal on April 21, 2019")
-
-print("cxgen 1.0.2.1 successfully imported")
-print("To see the manual of cxgen 1.0.2.1, use the command 'cxgen.manual()'")
+    print("Created by Armaan Aggarwal on May 26, 2019")
 

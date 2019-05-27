@@ -9,3 +9,5 @@ cxgen.egg-info/dependency_links.txt
 cxgen.egg-info/top_level.txt
 cxgen/files/LICENSE-for-function.txt
 cxgen/files/manual.txt
+cxgen/files/tcl86t.dll
+cxgen/files/tk86t.dll
