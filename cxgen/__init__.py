@@ -2,13 +2,13 @@ import time
 import pkg_resources
 
 name = "cxgen"
-version='1.0.2.2'
+version='1.0.2.3'
 
 #cxgen.run() variables:
     #for no icon, make icon=None
     #console: True if u want console, False if u don't want console
     #tkinterusage: if u want tkinter, make True, False, if u don't want quit
-def run(appname,filename,tkinterusage,console,icon):
+def run(appname,filename,version,tkinterusage,console,icon):
     """To learn how cxgen.run() works, call the function 'cxgen.manual()'."""
 
     if console != True and console != False:
@@ -67,7 +67,7 @@ def run(appname,filename,tkinterusage,console,icon):
         print("       #They are required dlls for tkinter to work.")
         print('       #But, you can also include other files your program requires')
         print()
-        print('build_exe_options={"packages":imodules,"excludes":emodules,include_files:includefiles}')
+        print('build_exe_options={"packages":imodules,"excludes":emodules,"include_files":includefiles}')
 
         
         if console==True:
@@ -82,6 +82,8 @@ def run(appname,filename,tkinterusage,console,icon):
 
         print("setup(")
         print('        name=',appname)
+        print('        version={},',version)
+        print('        version={},'.format(version))
         print('        options={"build_exe":build_exe_options},')
         print("        executables=[")
         print("        Executable(")
@@ -127,7 +129,7 @@ def run(appname,filename,tkinterusage,console,icon):
         
         print()
               
-        print('build_exe_options={"packages":imodules,"excludes":emodules,include_files:includefiles}')
+        print('build_exe_options={"packages":imodules,"excludes":emodules,"include_files":includefiles}')
         
         
         if console==True:
@@ -142,6 +144,8 @@ def run(appname,filename,tkinterusage,console,icon):
 
         print("setup(")
         print('        name=',appname)
+        print('        version={},',version)
+        print('        version={},'.format(version))
         print('        options={"build_exe":build_exe_options},')
         print("        executables=[")
         print("        Executable(")
@@ -186,5 +190,5 @@ def manual():
 def about():
     print("About cxgen {}".format(version))
     print()
-    print("Created by Armaan Aggarwal on May 26, 2019")
+    print("Created by Armaan Aggarwal on July 17, 2019")
 

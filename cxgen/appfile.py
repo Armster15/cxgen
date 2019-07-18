@@ -24,6 +24,9 @@ appname='"'+appname+'",' #don't get overwhelmed, this is for adding quotes to ap
 print("Type in file name with the .py extention:")
 filename=input()
 
+print("Type in a version to give to your executable.")
+_version=input()
+
 print("Are you using tkinter? (y/n)")
 pyga=input()
 
@@ -74,7 +77,7 @@ if pyga in 'Yy':
     print('       But, you can also include other files if your program requires. This is not required.')
     
     print()
-    print('build_exe_options={"packages":imodules,"excludes":emodules,include_files:includefiles}')
+    print('build_exe_options={"packages":imodules,"excludes":emodules,"include_files":includefiles}')
 
     print()
 
@@ -126,7 +129,7 @@ if pyga in 'Nn':
     print("                #You aren't required to add files in this list.")
     print()
 
-    print('build_exe_options={"packages":imodules,"excludes":emodules,include_files:includefiles}')
+    print('build_exe_options={"packages":imodules,"excludes":emodules,"include_files":includefiles}')
     print()
     
     print("setup(")
