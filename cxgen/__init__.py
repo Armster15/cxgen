@@ -1,8 +1,20 @@
-import time
+try:
+    from . import utils
+
+except:
+    import utils
+    
 import pkg_resources
+import sys, os
+
+if sys.version[0]==3:
+    from importlib import reload
+    #for reload module since it isnt built in Python 3.x
+
 
 name = "cxgen"
-version='1.0.2.3'
+version='2.0.0'
+creation_date="July 19, 2019"
 
 #cxgen.run() variables:
     #for no icon, make icon=None
@@ -44,11 +56,37 @@ def run(appname,filename,version,tkinterusage,console,icon):
         print()
 
         print("Copy and Paste the code below in a new .py file.")
-        print("IMPORTANT: Save it in the same folder as",filename)
-        print()
+
+        saveinsamefolder=("IMPORTANT: Save it in the same folder as",filename)
+        saveinsamefolder=str(saveinsamefolder)
+        saveinsamefolder=saveinsamefolder.replace('(','')
+        saveinsamefolder=saveinsamefolder.replace(')','')
+        saveinsamefolder=list(saveinsamefolder)
+        saveinsamefolder[0]=''
+        saveinsamefolder[-1]=''
+        saveinsamefolder=''.join(saveinsamefolder)
+        print(saveinsamefolder,'\n')
+        for x in saveinsamefolder:
+            print('-',end='')
+        print('\n')
+        #all of this to have a cool line that seperates the notices and code
         
         print("import cx_Freeze")
         print("from cx_Freeze import *")
+        print('import os')
+        print('import os.path')
+
+        print()
+
+        print('PYTHON_INSTALL_DIR = os.path.dirname(os.path.dirname(os.__file__))')
+        
+        print("os.environ['TCL_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', '{}')"
+              .format(utils.name_plus_version('tcl')))
+        
+        print("os.environ['TK_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', '{}')"
+              .format(utils.name_plus_version('tk')))
+
+        print()
 
         print("imodules=['tkinter'] #modules to include")
         print()
@@ -56,10 +94,12 @@ def run(appname,filename,version,tkinterusage,console,icon):
         print("            #(useful if a module is forcefully installed")
         print("            #even if you don't want that module)")
         print()
+
+        tkdll='r"'+utils.findtkdll()+'"'
+        tcldll='r"'+utils.findtcldll()+'"'
         
-        print('import pkg_resources as p')
-        print('tkdll=p.resource_filename("cxgen","/files/tk86t.dll)')
-        print('tcldll=p.resource_filename("cxgen","/files/tcl86t.dll)')
+        print('tkdll={}'.format(tkdll))
+        print('tcldll={}'.format(tcldll))
         print()
         print("includefiles=[tkdll,tcldll] #files to include (these can be images, documents, dlls, etc.)")
         print()
@@ -82,14 +122,13 @@ def run(appname,filename,version,tkinterusage,console,icon):
 
         print("setup(")
         print('        name=',appname)
-        print('        version={},',version)
-        print('        version={},'.format(version))
+        print('        version="{}",'.format(version))
         print('        options={"build_exe":build_exe_options},')
         print("        executables=[")
         print("        Executable(")
 
         if icon != None:
-            iconname='"'+iconname+'",'
+            icon='"'+icon+'",'
             print("                ",filename,'base=base,icon=',icon)
 
 
@@ -139,13 +178,12 @@ def run(appname,filename,version,tkinterusage,console,icon):
             print('if sys.platform == "win32":')
             print('     base = "Win32GUI"')
 
-        if console !=True or console != False:
+        if console !=True and console != False:
             raise ValueError(console, 'is not a valid argument for the console paramater. To know how to use this paramter, run the "cxgen.manual()" function')
 
         print("setup(")
         print('        name=',appname)
-        print('        version={},',version)
-        print('        version={},'.format(version))
+        print('        version="{}",'.format(version))
         print('        options={"build_exe":build_exe_options},')
         print("        executables=[")
         print("        Executable(")
@@ -174,7 +212,8 @@ def run(appname,filename,version,tkinterusage,console,icon):
 
 
 def app():
-    from cxgen import appfile
+    from . import appfile
+    appfile.main()
         
 def cxgen_license():
     lf=pkg_resources.resource_filename('cxgen','files/LICENSE-for-function.txt')
@@ -190,5 +229,5 @@ def manual():
 def about():
     print("About cxgen {}".format(version))
     print()
-    print("Created by Armaan Aggarwal on July 17, 2019")
+    print("Created by Armaan Aggarwal on {}".format(creation_date))
 

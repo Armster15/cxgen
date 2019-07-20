@@ -5,11 +5,12 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="cxgen",
-    version="1.0.2.3", 
+    version="2.0.0", 
     author="Armaan Aggarwal",
     description="A package to generate cx_Freeze setup.py file!",
     long_description=long_description,
     packages=setuptools.find_packages(),
+    license='MIT',
 
     include_package_data=True,
     
