@@ -1,4 +1,4 @@
-Manual for cxgen 1.0.2.3:
+Manual for cxgen 2.0.0:
 
 1. cxgen.app()
 	Usage: A script generator for the module for cx_Freeze.
@@ -15,11 +15,6 @@ Manual for cxgen 1.0.2.3:
 
 		filename parameter: This parameter should be the name of your python file you 
 					want to convert. ex: 'helloworld.py'
-		
-		version parameter: This paramater should be the verison you want to give to
-				   your executable. 
-                                   
-                                   Example: 2.3.7, 1.0, 0.5
 
 		tkinterusage parameter: This parameter is for if you want tkinter built into
 					your application - 
