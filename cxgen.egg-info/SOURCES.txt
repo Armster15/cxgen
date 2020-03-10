@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+setup.py
+cxgen/GUI.py
+cxgen/__init__.py
+cxgen/utils.py
+cxgen.egg-info/PKG-INFO
+cxgen.egg-info/SOURCES.txt
+cxgen.egg-info/dependency_links.txt
+cxgen.egg-info/top_level.txt
+cxgen/Legacy/__init__.py
+cxgen/Legacy/appfile.py
+cxgen/Legacy/utils.py
+cxgen/Legacy/files/LICENSE-for-function.txt
+cxgen/Legacy/files/manual.txt

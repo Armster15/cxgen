@@ -33,6 +33,11 @@ Manual for cxgen 2.0.0:
 
 					NOTE: On Windows, the icon file MUST be a .ico file.
 
+		***NEW***: cdFolder parameter:
+					This parameter by default is set to None. If you supply a folder,
+					it will change the directory to the directory supplied in this
+					parameter
+
 
 3. cxgen.cxgen_license()
 	Usage: Shows the license of cxgen
