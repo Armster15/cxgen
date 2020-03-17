@@ -1,13 +1,10 @@
-# cxgen 3.0.0
+# cxgen
 
 by Armaan Aggarwal
-on March 9, 2020
 
-![alt text](https://i.imgur.com/UMFWB2g.png "The cxgen GUI")
+![The cxgen GUI](media/showcaseGUI.png "The cxgen GUI")
 
-It's been a while (like a year) 
-but I have made some new (more like big) 
-changes to cxgen!
+New changes in cxgen 3
 
 - There is now a GUI! (cxgen will now be more focused as a GUI converter)
 - cxgen stil uses the 2.0.0 framework, it's  just rebranded as a module: cxgen.Legacy
@@ -15,7 +12,7 @@ changes to cxgen!
 - Python 2 is no longer supported - only Python versions 3+ are supported
 
 ## How to use cxgen
-**To run the GUI:** `from cxgen import GUI`
+### To run the GUI: `from cxgen import GUI`
 
 ### Legacy
 To run the legacy based console application: 
@@ -30,8 +27,13 @@ To run the legacy method to generate cx_Freeze setup code:
     
 ## Download
 
-PyPi: https://test.pypi.org/project/cxgen/
-or run `pip install cxgen==3.0.0`
+### Stable Build
 
-GitHub binaries: https://github.com/armaan115/cxgen/releases/tag/3.0.0
+- PyPi: https://test.pypi.org/project/cxgen/
+or run `pip install cxgen`
+
+- GitHub binaries: https://github.com/armaan115/cxgen/releases
+
+### Download directly from `master` branch (Experimental)
+- Run in your command line: `pip install git+https://github.com/armaan115/cxgen`
 
