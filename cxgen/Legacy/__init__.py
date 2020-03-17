@@ -12,10 +12,6 @@ if sys.version[0]==3:
     #for reload module since it isnt built in Python 3.x
 
 
-# name = "cxgen"
-# version='2.0.0'
-# creation_date="July 19, 2019"
-
 cxcommand = [] #all the code that will be executed soon using the following code
                # for x in cxcommand:
                #    exec(x)

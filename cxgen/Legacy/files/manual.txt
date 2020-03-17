@@ -1,4 +1,4 @@
-Manual for cxgen 2.0.0:
+Manual for cxgen.Legacy:
 
 1. cxgen.app()
 	Usage: A script generator for the module for cx_Freeze.
