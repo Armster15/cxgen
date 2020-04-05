@@ -106,14 +106,15 @@ def run(appname,filename,version,tkinterusage,console,icon, cdFolder = None):
         print2command("import sys")
         print2command('sys.argv.append("build")')
         print2command()
-
-        print2command('PYTHON_INSTALL_DIR = os.path.dirname(os.path.dirname(os.__file__))')
         
-        print2command("os.environ['TCL_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', '{}')"
-              .format(utils.name_plus_version('tcl')))
-        
-        print2command("os.environ['TK_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', '{}')"
-              .format(utils.name_plus_version('tk')))
+        if sys.platform == "win32":
+            print2command('PYTHON_INSTALL_DIR = os.path.dirname(os.path.dirname(os.__file__))')
+            
+            print2command("os.environ['TCL_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', '{}')"
+                .format(utils.name_plus_version('tcl')))
+            
+            print2command("os.environ['TK_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', '{}')"
+                .format(utils.name_plus_version('tk')))
 
         print2command()
 
@@ -144,7 +145,7 @@ def run(appname,filename,version,tkinterusage,console,icon, cdFolder = None):
             
         if console==False:
             print2command("import sys")
-            print2command('if sys.platform == "win32": base = "Win32GUI"')            
+            print2command('base = "Win32GUI"')            
 
 
         if icon !=None:
@@ -226,7 +227,7 @@ def run(appname,filename,version,tkinterusage,console,icon, cdFolder = None):
             print2command("base=None")
         if console==False:
             print2command("import sys")
-            print2command('if sys.platform == "win32": base = "Win32GUI"')
+            print2command('base = "Win32GUI"')
 
         if console !=True and console != False:
             raise ValueError(console, 'is not a valid argument for the console paramater. To know how to use this paramter, run the "cxgen.manual()" function')
