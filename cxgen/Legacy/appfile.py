@@ -51,7 +51,9 @@ def main():
         iconname=None
 
     # segment 3: print the code.
-    run(appname,filename,_version,pyga,console,iconname)
+    code = run(appname,filename,_version,pyga,console,iconname)
+    for x in code:
+        print(x)
     
 
     #segment 4: delete variables created

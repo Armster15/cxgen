@@ -125,14 +125,21 @@ def run(appname,filename,version,tkinterusage,console,icon, cdFolder = None):
         print2command("            #even if you don't want that module)")
         print2command()
 
-        tkdll='r"'+utils.findtkdll()+'"'
-        tcldll='r"'+utils.findtcldll()+'"'
-        
-        print2command('tkdll={}'.format(tkdll))
-        print2command('tcldll={}'.format(tcldll))
-        print2command()
-        print2command("includefiles=[tkdll,tcldll] #files to include (these can be images, documents, dlls, etc.)")
-        print2command()
+        if sys.platform == "win32":
+            tkdll='r"'+utils.findtkdll()+'"'
+            tcldll='r"'+utils.findtcldll()+'"'
+            print2command('tkdll={}'.format(tkdll))
+            print2command('tcldll={}'.format(tcldll))
+            print2command()
+
+
+            print2command("includefiles=[tkdll,tcldll] #files to include (these can be images, documents, dlls, etc.)")
+            print2command()
+
+        else:
+            print2command("includefiles=[] #files to include (these can be images, documents, dlls, etc.)")
+            print2command()
+
         print2command("#NOTE: DO NOT remove tcldll and tkdll in includefiles if you are using tkinter.")
         print2command("       #They are required dlls for tkinter to work.")
         print2command('       #But, you can also include other files your program requires')
